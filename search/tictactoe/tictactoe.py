@@ -1,6 +1,3 @@
-"""
-Tic Tac Toe Player
-"""
 import copy
 import math
 
@@ -59,7 +56,7 @@ def winner(board):
     return None
         
 def terminal(board):
-    if winner(board) == None or actions(board) == False:
+    if winner(board) is not None or not actions(board):
         return True
     else:
         return False
