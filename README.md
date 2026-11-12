@@ -9,7 +9,7 @@ The course explores fundamental concepts in Artificial Intelligence, including s
 | Project | Topics |
 |---|---|
 | [Degrees](search/degrees/) | Graph Search, Breadth-First Search |
-| [Tic-Tac-Toe](tic-tac-toe/) | Minimax, Adversarial Search |
+| [Tic-Tac-Toe](tictactoe/) | Minimax, Adversarial Search |
 
 ## Technologies
 
