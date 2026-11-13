@@ -40,8 +40,7 @@ def result(board, action):
     return new_board
 
 def winner(board):
-    lines = list(board)
-    wpossibilities = lines
+    wpossibilities = list(board)
     for j in range(3):
         column = [board[i][j] for i in range(3)]
         wpossibilities.append(column)
@@ -56,21 +55,57 @@ def winner(board):
     return None
         
 def terminal(board):
-    if winner(board) is not None or not actions(board):
-        return True
-    else:
-        return False
+    return winner(board) is not None or not actions(board)
 
 
 def utility(board):
-    """
-    Returns 1 if X has won the game, -1 if O has won, 0 otherwise.
-    """
-    raise NotImplementedError
+    w = winner(board) 
+    if w == X:
+        return 1
+    elif w == O:
+        return -1
+    else:
+        return 0
 
+def max_value(board):
+        if terminal(board):
+            return utility(board)
+        v = -math.inf
+        for action in actions(board):
+            v = max(v, min_value(result(board, action)))
+        return v
+
+def min_value(board):
+    if terminal(board):
+        return utility(board)
+    v = math.inf
+    for action in actions(board):
+        v = min(v, max_value(result(board, action)))
+    return v
 
 def minimax(board):
-    """
-    Returns the optimal action for the current player on the board.
-    """
-    raise NotImplementedError
+    if terminal(board):
+        return None
+    turn = player(board)
+
+    if turn == X:
+        best_score = -math.inf
+        best_action = None
+        for action in actions(board):
+            new_board = result(board, action)
+            v = min_value(new_board)
+            if v > best_score:
+                best_score = v
+                best_action = action
+        return best_action
+        
+    if turn == O:
+        best_score = math.inf
+        best_action = None
+        for action in actions(board):
+            new_board = result(board, action)
+            v = max_value(new_board)
+            if v < best_score:
+                best_score = v
+                best_action = action
+        return best_action

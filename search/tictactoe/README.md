@@ -4,39 +4,37 @@ A project developed as part of Harvard's CS50 Introduction to Artificial Intelli
 
 ## Status
 
-**In Progress** (Core game logic implemented; AI Minimax and utility evaluation pending).
+**Completed** (Core game logic, utility evaluation, and Minimax AI fully implemented).
 
 ## Overview
 
 The goal of this project is to implement an AI that plays Tic-Tac-Toe optimally using the Minimax algorithm.
 
-The project represents the game board state and applies adversarial search to determine the best possible move for the player.
+The project represents the game board state and applies adversarial search to determine the best possible move for the player, ensuring the AI never loses.
 
-## Current Implementation
+## Implementation Details
 
-The CS50 distribution provided the initial project structure, GUI (`runner.py`), and helper functions.
+The CS50 distribution provided the initial project structure, graphical user interface (`runner.py`), and foundational helper functions.
 
-So far, the core rules and state functions in `tictactoe.py` have been implemented:
-- `player`: Determines which player's turn it is (X or O).
+The following core components were fully implemented in `tictactoe.py`:
+- `player`: Determines which player's turn it is (X or O) based on the board state.
 - `actions`: Returns a set of all possible available actions (empty cells) on the board.
-- `result`: Returns the board that results from making a move on the board.
+- `result`: Returns the new board state that results from making a move.
 - `winner`: Returns the winner of the game, if there is one.
 - `terminal`: Checks if the game is over (won, lost, or tie).
-
-Pending implementation:
-- `utility`: Computes the final numerical utility of a terminal board (1, -1, or 0).
-- `minimax`: Computes the optimal action for the current player.
+- `utility`: Computes the final numerical utility of a terminal board (1 for X win, -1 for O win, 0 for tie).
+- `minimax` (along with `max_value` and `min_value` helper functions): Computes the optimal adversarial action for the current player using recursive game tree search.
 
 ## Concepts Applied
 
 - Adversarial Search
-- Minimax Algorithm
+- Minimax Algorithm and Recursion
 - Game Theory and State Spaces
-- Python data structures and deep copying
+- Python data structures, list comprehensions, and deep copying
 
-## Files
+## How to Run
 
-- `tictactoe.py`: Main implementation containing the game logic and pending AI functions.
-- `runner.py`: Graphical user interface provided by CS50 to play the game visually.
-- `requirements.txt`: List of Python packages required to run the game.
-- `OpenSans-Regular.ttf`: Font file used by the graphical interface.
+From the `tictactoe` directory (with your virtual environment active):
+
+```bash
+python runner.py
